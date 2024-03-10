@@ -80,10 +80,10 @@
 					"type": "LinkedServiceReference"
 				},
 				"parameters": {
-					"schemaname": {
+					"SchemaName": {
 						"type": "string"
 					},
-					"tablename": {
+					"TableName": {
 						"type": "string"
 					}
 				},
@@ -469,11 +469,11 @@
 											"referenceName": "ParquetTable",
 											"type": "DatasetReference",
 											"parameters": {
-												"schemaname": {
+												"SchemaName": {
 													"value": "@item().SchemaName",
 													"type": "Expression"
 												},
-												"tablename": {
+												"TableName": {
 													"value": "@item().TableName",
 													"type": "Expression"
 												}
