@@ -8,10 +8,19 @@
 		"AzureDataLakeStorage1_accountKey": {
 			"value": ""
 		},
+		"AzureDataLakeStorage_currency_accountKey": {
+			"value": ""
+		},
 		"OnPremSqlServer_connectionString": {
 			"value": "Integrated Security=False;Data Source=localhost;Initial Catalog=AdventureWorksLT2019;User ID=uthkarsha"
 		},
+		"SqlServer1_new_connectionString": {
+			"value": "Integrated Security=False;Data Source=localhost;Initial Catalog=AdventureWorksDW2022;User ID=ukki"
+		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://projectadlsgen02.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage_currency_properties_typeProperties_url": {
 			"value": "https://projectadlsgen02.dfs.core.windows.net/"
 		},
 		"AzureDatabricks1_properties_typeProperties_existingClusterId": {
