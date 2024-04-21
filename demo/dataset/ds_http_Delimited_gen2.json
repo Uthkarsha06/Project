@@ -1,10 +1,6 @@
 {
 	"name": "ds_http_Delimited_gen2",
 	"properties": {
-		"linkedServiceName": {
-			"referenceName": "ls_adlsgen2",
-			"type": "LinkedServiceReference"
-		},
 		"parameters": {
 			"fileName": {
 				"type": "string"
