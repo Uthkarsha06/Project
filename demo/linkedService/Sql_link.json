@@ -1,0 +1,28 @@
+{
+	"name": "Sql_link",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"server": "localhost",
+			"database": "Customers",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"hostNameInCertificate": "",
+			"authenticationType": "SQL",
+			"userName": "utkarsha",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AzureKeyVault1",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "passwordalpha"
+			}
+		},
+		"connectVia": {
+			"referenceName": "SHIR",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
