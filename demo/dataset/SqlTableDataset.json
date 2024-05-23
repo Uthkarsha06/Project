@@ -1,0 +1,73 @@
+{
+	"name": "SqlTableDataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Sql_link",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "time_period_start",
+				"type": "datetimeoffset",
+				"scale": 7
+			},
+			{
+				"name": "time_period_end",
+				"type": "datetimeoffset",
+				"scale": 7
+			},
+			{
+				"name": "Exact_time_open",
+				"type": "datetimeoffset",
+				"scale": 7
+			},
+			{
+				"name": "Exact_time_close",
+				"type": "datetimeoffset",
+				"scale": 7
+			},
+			{
+				"name": "rate_open",
+				"type": "decimal",
+				"precision": 8,
+				"scale": 2
+			},
+			{
+				"name": "rate_high",
+				"type": "decimal",
+				"precision": 8,
+				"scale": 2
+			},
+			{
+				"name": "rate_low",
+				"type": "decimal",
+				"precision": 8,
+				"scale": 2
+			},
+			{
+				"name": "rate_close",
+				"type": "decimal",
+				"precision": 8,
+				"scale": 2
+			},
+			{
+				"name": "Currency",
+				"type": "varchar"
+			},
+			{
+				"name": "AssetName",
+				"type": "varchar"
+			},
+			{
+				"name": "Asset",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Alpha"
+		}
+	}
+}

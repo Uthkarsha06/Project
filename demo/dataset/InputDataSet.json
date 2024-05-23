@@ -1,0 +1,68 @@
+{
+	"name": "InputDataSet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "cryptoAlpha.csv",
+				"fileSystem": "source"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "time_period_start",
+				"type": "String"
+			},
+			{
+				"name": "time_period_end",
+				"type": "String"
+			},
+			{
+				"name": "Exact_time_open",
+				"type": "String"
+			},
+			{
+				"name": "Exact_time_close",
+				"type": "String"
+			},
+			{
+				"name": "rate_open",
+				"type": "String"
+			},
+			{
+				"name": "rate_high",
+				"type": "String"
+			},
+			{
+				"name": "rate_low",
+				"type": "String"
+			},
+			{
+				"name": "rate_close",
+				"type": "String"
+			},
+			{
+				"name": "Currency",
+				"type": "String"
+			},
+			{
+				"name": "AssetName",
+				"type": "String"
+			},
+			{
+				"name": "Asset",
+				"type": "String"
+			}
+		]
+	}
+}
