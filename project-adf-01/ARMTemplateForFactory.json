@@ -386,6 +386,79 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/InputDataSet')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "cryptoAlpha.csv",
+						"fileSystem": "source"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "time_period_start",
+						"type": "String"
+					},
+					{
+						"name": "time_period_end",
+						"type": "String"
+					},
+					{
+						"name": "Exact_time_open",
+						"type": "String"
+					},
+					{
+						"name": "Exact_time_close",
+						"type": "String"
+					},
+					{
+						"name": "rate_open",
+						"type": "String"
+					},
+					{
+						"name": "rate_high",
+						"type": "String"
+					},
+					{
+						"name": "rate_low",
+						"type": "String"
+					},
+					{
+						"name": "rate_close",
+						"type": "String"
+					},
+					{
+						"name": "Currency",
+						"type": "String"
+					},
+					{
+						"name": "AssetName",
+						"type": "String"
+					},
+					{
+						"name": "Asset",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage1')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/ParquetTable')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -592,6 +665,84 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/SqlServer1_new')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SqlTableDataset')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Sql_link",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [
+					{
+						"name": "time_period_start",
+						"type": "datetimeoffset",
+						"scale": 7
+					},
+					{
+						"name": "time_period_end",
+						"type": "datetimeoffset",
+						"scale": 7
+					},
+					{
+						"name": "Exact_time_open",
+						"type": "datetimeoffset",
+						"scale": 7
+					},
+					{
+						"name": "Exact_time_close",
+						"type": "datetimeoffset",
+						"scale": 7
+					},
+					{
+						"name": "rate_open",
+						"type": "decimal",
+						"precision": 8,
+						"scale": 2
+					},
+					{
+						"name": "rate_high",
+						"type": "decimal",
+						"precision": 8,
+						"scale": 2
+					},
+					{
+						"name": "rate_low",
+						"type": "decimal",
+						"precision": 8,
+						"scale": 2
+					},
+					{
+						"name": "rate_close",
+						"type": "decimal",
+						"precision": 8,
+						"scale": 2
+					},
+					{
+						"name": "Currency",
+						"type": "varchar"
+					},
+					{
+						"name": "AssetName",
+						"type": "varchar"
+					},
+					{
+						"name": "Asset",
+						"type": "varchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "Alpha"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/Sql_link')]"
 			]
 		},
 		{
