@@ -194,6 +194,223 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/pipeline1')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy data1",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "AzureBlobFSReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "SqlServerSink",
+								"writeBehavior": "upsert",
+								"upsertSettings": {
+									"useTempDB": true,
+									"keys": [
+										"time_period_start",
+										"time_period_end"
+									]
+								},
+								"sqlWriterUseTableLock": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "time_period_start",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "time_period_start",
+											"type": "DateTimeOffset",
+											"physicalType": "datetimeoffset"
+										}
+									},
+									{
+										"source": {
+											"name": "time_period_end",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "time_period_end",
+											"type": "DateTimeOffset",
+											"physicalType": "datetimeoffset"
+										}
+									},
+									{
+										"source": {
+											"name": "Exact_time_open",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Exact_time_open",
+											"type": "DateTimeOffset",
+											"physicalType": "datetimeoffset"
+										}
+									},
+									{
+										"source": {
+											"name": "Exact_time_close",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Exact_time_close",
+											"type": "DateTimeOffset",
+											"physicalType": "datetimeoffset"
+										}
+									},
+									{
+										"source": {
+											"name": "rate_open",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "rate_open",
+											"type": "Decimal",
+											"physicalType": "decimal",
+											"scale": 2,
+											"precision": 8
+										}
+									},
+									{
+										"source": {
+											"name": "rate_high",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "rate_high",
+											"type": "Decimal",
+											"physicalType": "decimal",
+											"scale": 2,
+											"precision": 8
+										}
+									},
+									{
+										"source": {
+											"name": "rate_low",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "rate_low",
+											"type": "Decimal",
+											"physicalType": "decimal",
+											"scale": 2,
+											"precision": 8
+										}
+									},
+									{
+										"source": {
+											"name": "rate_close",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "rate_close",
+											"type": "Decimal",
+											"physicalType": "decimal",
+											"scale": 2,
+											"precision": 8
+										}
+									},
+									{
+										"source": {
+											"name": "Currency",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Currency",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "AssetName",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "AssetName",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Asset",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Asset",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									}
+								],
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "Input2",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "SqlTableDataset",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/pipeline_new')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
