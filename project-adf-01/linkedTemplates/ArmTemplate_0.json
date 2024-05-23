@@ -40,6 +40,18 @@
 		"AzureDatabricks1_properties_typeProperties_existingClusterId": {
 			"type": "string",
 			"defaultValue": "0310-235331-93p6d009"
+		},
+		"Sql_link_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "localhost"
+		},
+		"Sql_link_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "Customers"
+		},
+		"Sql_link_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "utkarsha"
 		}
 	},
 	"variables": {
@@ -334,6 +346,40 @@
 							"type": "LinkedServiceReference"
 						},
 						"secretName": "password-new"
+					}
+				},
+				"connectVia": {
+					"referenceName": "SHIR",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/SHIR')]",
+				"[concat(variables('factoryId'), '/linkedServices/AzureKeyVault1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Sql_link')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"server": "[parameters('Sql_link_properties_typeProperties_server')]",
+					"database": "[parameters('Sql_link_properties_typeProperties_database')]",
+					"encrypt": "mandatory",
+					"trustServerCertificate": false,
+					"hostNameInCertificate": "",
+					"authenticationType": "SQL",
+					"userName": "[parameters('Sql_link_properties_typeProperties_userName')]",
+					"password": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "AzureKeyVault1",
+							"type": "LinkedServiceReference"
+						},
+						"secretName": "passwordalpha"
 					}
 				},
 				"connectVia": {

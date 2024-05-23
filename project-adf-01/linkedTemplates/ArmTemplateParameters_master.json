@@ -29,6 +29,15 @@
 		"AzureKeyVault1_properties_typeProperties_baseUrl": {
 			"value": "https://project-kv.vault.azure.net/"
 		},
+		"Sql_link_properties_typeProperties_server": {
+			"value": "localhost"
+		},
+		"Sql_link_properties_typeProperties_database": {
+			"value": "Customers"
+		},
+		"Sql_link_properties_typeProperties_userName": {
+			"value": "utkarsha"
+		},
 		"containerUri": {
 			"value": ""
 		},
