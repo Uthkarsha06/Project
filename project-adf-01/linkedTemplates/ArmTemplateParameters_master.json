@@ -17,6 +17,9 @@
 		"SqlServer1_new_connectionString": {
 			"value": "Integrated Security=False;Data Source=localhost;Initial Catalog=AdventureWorksDW2022;User ID=ukki"
 		},
+		"alphastorage_accountKey": {
+			"value": ""
+		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"value": "https://projectadlsgen02.dfs.core.windows.net/"
 		},
@@ -37,6 +40,9 @@
 		},
 		"Sql_link_properties_typeProperties_userName": {
 			"value": "utkarsha"
+		},
+		"alphastorage_properties_typeProperties_url": {
+			"value": "https://projectadlsgen02.dfs.core.windows.net/"
 		},
 		"containerUri": {
 			"value": ""
